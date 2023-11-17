@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent {
+            position: relative;
+            margin: auto;
+            border: 2px solid red;
+            overflow: hidden;
+        }
+        #background {
+            background-color: lightblue;
+            position: relative;
+            margin: auto;
+        }
+        .walls {
+            background-color: brown;
+        }
+        .checkpointWalls {
+            background-color: blue;
+        }
+        .pickupWalls {
+            background-color: black;
+        }
+        .pickups {
+            background-color: purple;
+        }
+        .lava {
+            background-color: gold;
+        }
+        #player {
+            background-color: gray;
+        }
+        .burntPlayer {
+            background-color: red;
+        }
+        .victoriousPlayer {
+            background-color: green;
+        }
+        .coins {
+            background-color: green;
+        }
+        #collectedPickups {
+            position: absolute;
+            background-color: blue;
+            overflow: auto;
+            width: 150px;
+            height: 30px;
+        }
+        .pickupIcons {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 90%;
+            border: 1px solid red;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent" style="width: 400px; height: 320px;"></div>
+    <div id="collectedPickups"></div>
+</body>
+<script src="js/main.js" type="module"></script>
+</html>

@@ -1,0 +1,12 @@
+<script>
+let webDB = indexedDB.open('lava')
+webDB.addEventListener('success', (e) => {
+    console.log('a connection to the db has been created ',webDB.result)
+})
+webDB.then(function() {
+    let create = webDB.result.createObjectStore('level')
+    create.addEventListener('success', e => {
+        console.log('a new object store has been created')
+    })
+})
+</script>

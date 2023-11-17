@@ -1,0 +1,65 @@
+<script>
+    class Profession {
+        constructor (pro) {
+            this.profession = pro;
+        }
+        company(name) {
+            return 'I am a '+this.profession+' at '+name;
+        }
+    }
+    class Parent {
+        constructor(name, age, profession, arr) {
+            this.name = name;
+            this.age = age;
+            this.profession = new Profession(profession);
+            this.arr = arr;
+        }
+        intro() {
+            return 'Yo, I am '+this.name;
+        }
+        set changeName(name) {
+            this.name = name;
+        }
+        changePro(name) {
+            this.profession = new Profession(name);
+        }
+        jobDetails() {
+            return this.profession.company('BlueTech');
+        }
+    }
+    let parent = new Parent('Baba jojo', '76', 'Doctor', [{x: '10', y: 'y7'}, 2])
+    function cloneState(state) {
+        let newObj = JSON.parse(JSON.stringify(state));
+        Object.setPrototypeOf(newObj, Object.getPrototypeOf(state));
+        function clone(prop, parent, stateParent) {
+            if (typeof parent[prop] == 'string' || typeof parent[prop] == 'number') return; 
+            if (typeof parent[prop] == 'object') {
+                if (Array.isArray(parent[prop])) {
+                    for (let i = 0; i < parent[prop].length; i++) {
+                        clone(i, parent[prop], stateParent[prop]);
+                    }
+                } else {
+                    Object.setPrototypeOf(parent[prop], Object.getPrototypeOf(stateParent[prop]));
+                    for (let element in parent[prop]) {
+                        clone(element, parent[prop], stateParent[prop]);
+                    }
+                }
+            }
+        }
+        for (let prop in newObj) {
+            clone(prop, newObj, state)
+        }
+        return newObj;
+    }
+    let child = cloneState(parent);
+    // let oldchild = JSON.parse(JSON.stringify(parent));
+    // Object.setPrototypeOf(oldchild, Object.getPrototypeOf(parent));
+    // console.log('child',child)
+    // console.log('oldchild',oldchild)
+    // console.log(child.profession.company('bal'))
+    // console.log(oldchild.profession.company('tuyil'))
+    parent.changePro('Engineer')
+    child.changePro('janitor')
+    console.log(parent.profession.company('Ballk'))
+    console.log(child.profession.company('kam'))
+</script>
